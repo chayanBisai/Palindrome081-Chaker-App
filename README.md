@@ -1,1 +1,1 @@
-# Palindrome081-Chaker-App
+# Palindrome081-Checker-App
