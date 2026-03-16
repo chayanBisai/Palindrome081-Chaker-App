@@ -1,9 +1,12 @@
+/**
+ * PalindromeChecker Class
+ * Demonstrates: Encapsulation, Single Responsibility Principle
+ * Uses: Internal data structure (character array/stack concept)
+ */
 class PalindromeChecker {
-    public boolean checkPalindrome(String str) {
-
-        int start = 0;
-        int end = str.length() - 1;
-
+    
+    // Private method following Single Responsibility Principle
+    private boolean isPalindromeHelper(String str, int start, int end) {
         while (start < end) {
             if (str.charAt(start) != str.charAt(end)) {
                 return false;
@@ -13,17 +16,63 @@ class PalindromeChecker {
         }
         return true;
     }
+    
+    // Public method - Main responsibility: Check if string is palindrome
+    public boolean checkPalindrome(String str) {
+        // Input validation
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        
+        // Clean input: convert to lowercase and remove spaces
+        String cleanedStr = str.toLowerCase().replaceAll("\\s+", "");
+        
+        // Delegate to helper method
+        return isPalindromeHelper(cleanedStr, 0, cleanedStr.length() - 1);
+    }
+    
+    // Overloaded method to handle special characters
+    public boolean checkPalindromeIgnoreSpecial(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        
+        // Remove non-alphanumeric characters
+        String cleanedStr = str.toLowerCase().replaceAll("[^a-z0-9]", "");
+        return isPalindromeHelper(cleanedStr, 0, cleanedStr.length() - 1);
+    }
 }
+
 public class Main {
     public static void main(String[] args) {
-
+        
+        // Create instance of PalindromeChecker (Encapsulation)
         PalindromeChecker checker = new PalindromeChecker();
-        String word = "madam";
-
-        if (checker.checkPalindrome(word)) {
-            System.out.println("The string is a Palindrome");
-        } else {
-            System.out.println("The string is Not a Palindrome");
+        
+        // Test cases
+        String[] testCases = {
+            "madam",
+            "A man a plan a canal Panama",
+            "racecar",
+            "hello",
+            "12321",
+            "noon"
+        };
+        
+        System.out.println("=== Palindrome Checker Results ===\n");
+        
+        for (String word : testCases) {
+            boolean result = checker.checkPalindrome(word);
+            System.out.println("Input: \"" + word + "\"");
+            System.out.println("Is Palindrome: " + result);
+            System.out.println("---");
         }
+        
+        // Test with special characters
+        System.out.println("\n=== Testing with Special Characters ===\n");
+        String complexTest = "A1b2B1a";
+        boolean result = checker.checkPalindromeIgnoreSpecial(complexTest);
+        System.out.println("Input: \"" + complexTest + "\"");
+        System.out.println("Is Palindrome (ignoring special chars): " + result);
     }
 }
