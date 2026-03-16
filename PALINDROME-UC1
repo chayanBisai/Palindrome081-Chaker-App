@@ -1,0 +1,13 @@
+public class PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        // Display application information
+        System.out.println("Welcome to Palindrome Checker App");
+        System.out.println("Application Name : PalindromeChecker");
+        System.out.println("Version : 1.0");
+
+        // Message for next process
+        System.out.println("The application is ready to check palindromes.");
+    }
+}
