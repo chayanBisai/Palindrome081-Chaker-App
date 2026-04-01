@@ -2,7 +2,6 @@ public class PalindromeIgnoreCaseSpace {
     public static void main(String[] args) {
         String str = "A man a plan a canal Panama";
         String normalized = str.replaceAll("\\s+", "").toLowerCase();
-
         String reversed = "";
         for (int i = normalized.length() - 1; i >= 0; i--) {
             reversed = reversed + normalized.charAt(i);
