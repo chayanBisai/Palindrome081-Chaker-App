@@ -1,17 +1,10 @@
 public class PalindromeCharArray {
     public static void main(String[] args) {
-
         String str = "madam";
-
-        // Convert string to character array
         char[] ch = str.toCharArray();
-
         int left = 0;
         int right = ch.length - 1;
-
         boolean isPalindrome = true;
-
-        // Two-pointer comparison
         while (left < right) {
             if (ch[left] != ch[right]) {
                 isPalindrome = false;
@@ -20,8 +13,6 @@ public class PalindromeCharArray {
             left++;
             right--;
         }
-
-        // Display result
         if (isPalindrome) {
             System.out.println("The string is a Palindrome");
         } else {
