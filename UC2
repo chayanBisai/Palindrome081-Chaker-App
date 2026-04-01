@@ -1,5 +1,4 @@
 public class HardcodedPalindrome {
-
     public static void main(String[] args) {
         String word = "madam";
         if(word.equals("madam")) {
